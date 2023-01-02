@@ -1,0 +1,34 @@
+CREATE TABLE PoloShirts (id INTEGER PRIMARY KEY, item_type TEXT, price INTEGER, size TEXT, popularity INTEGER);
+
+-- category "Polo Shirts plain for Men"
+INSERT INTO PoloShirts VALUES (1, "CONTRAST COLLAR POLO SHIRT", 22.99, "L", 50);
+INSERT INTO PoloShirts VALUES(2, "VISCOSE KNIT POLO", 29.99, "M", 68);
+INSERT INTO PoloShirts VALUES (3, "COMBINATION POLO SWEATSHIRT", 29.99, "M", 95);
+INSERT INTO PoloShirts VALUES (4, "KNIT POLO", 29.99, "M", 55);
+INSERT INTO PoloShirts VALUES (5, "PIQUÉ TEXTURED POLO SHIRT", 22.99, "S", 30);
+INSERT INTO PoloShirts VALUES (6, "COTTON - SILK BLEND KNIT POLO", 49.99, "M", 95);
+
+-- category "Polo Shirts prints for Men" 
+INSERT INTO PoloShirts VALUES (7, "TEXTURED T-SHIRT", 29.99, "S", 47);
+INSERT INTO PoloShirts VALUES (8, "STRUCTURED PATCH SHIRT", 29.99, "M", 29);
+INSERT INTO PoloShirts VALUES (9, "STRIPED JACQUARD POLO", 29.99, "M", 80);
+INSERT INTO PoloShirts VALUES (10, "STRIPED KNIT POLO", 29.99, "L", 75);
+
+-- category "Polo Shirts join life for Men"
+INSERT INTO PoloShirts VALUES (11, "CONTRAST COLLAR POLO SHIRT", 22.99, "M", 50);
+
+
+-- display the database ordered by price.
+SELECT * FROM PoloShirts
+ORDER BY price desc;
+
+-- what is the avg price of items in the polo shirts section?
+SELECT AVG(price) "avg polo shirts item price for Medium size (M)"
+FROM PoloShirts
+WHERE size = "M";
+
+-- what are the most 5 popular items?
+SELECT item_type, price, popularity
+FROM PoloShirts
+order by popularity desc
+limit 5;
