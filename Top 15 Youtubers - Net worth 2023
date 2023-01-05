@@ -34,7 +34,7 @@ INSERT INTO networth (id, net_worth, subscribers) VALUES (9, "35 Million", "26.3
 INSERT INTO networth (id, net_worth, subscribers) VALUES (10, "30 Million", "20.3 Million");
 INSERT INTO networth (id, net_worth, subscribers) VALUES (11, "25 Million", "16.1 Million");
 INSERT INTO networth (id, net_worth, subscribers) VALUES (12, "22 Million", "23.8 Million");
-INSERT INTO networth (id, net_worth, subscribers) VALUES (13, "20 Million", "18.1");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (13, "20 Million", "18.1 Million");
 INSERT INTO networth (id, net_worth, subscribers) VALUES (14, "20 Million", "6.09 Million");
 INSERT INTO networth (id, net_worth, subscribers) VALUES (15, "16 Million", "17 Million");
 
