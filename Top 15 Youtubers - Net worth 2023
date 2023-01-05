@@ -1,0 +1,48 @@
+-- Table of Youtubers with their names, nationality and youtube channel
+
+CREATE TABLE youtubers (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, nationality TEXT, youtubechannel TEXT);
+
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (1, "Jay Jeon", "South Korea", "CoComelon");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (2, "Jeffree Star", "American", "jeffreestar");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (3, "Ryan Kaji", "American", "Ryan's world");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (4,"Jimmy Donaldson", "American", "MrBeast");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (5,"Logan Paul", "American", "Logan Paul");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (6,"Richard Tyler Blevins", "American", "Ninja");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (7, "Felix Kjellberg", "Swedish", "PewDiePie");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (8, "Mark Edward Fischbach", "American", "Markiplier");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (9, "Daniel Middleton",  "British", "DanTDM");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (10, "Jake Paul", "American", "Jake Paul");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (11, "Olajide Olatunji", "British", "KSI");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (12, "James Charles", "American", "James Charles");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (13, "David Dobrik", "Slovak", " David Dobrik");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (14, "Ethat Klein", "American", "h3h3Productions");
+INSERT INTO youtubers (id, fullname, nationality, youtubechannel) VALUES (15, "Stevin John", "American", "Blippi");
+
+
+-- Table of youtubers networth 2023
+CREATE TABLE networth ( id INTEGER PRIMARY KEY AUTOINCREMENT,  net_worth TEXT, subscribers INTEGER);
+
+INSERT INTO networth (id, net_worth, subscribers) VALUES (1, "460 Million", "151 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (2, "200 Million", "15.9 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (3, "100 Million", "34.1 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (4, "100 Million", "126 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (5, "45 Million", "23.6 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (6, "40 Million", "23.8 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (7, "40 Million", "111 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (8, "35 Million", "34.2 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (9, "35 Million", "26.3 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (10, "30 Million", "20.3 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (11, "25 Million", "16.1 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (12, "22 Million", "23.8 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (13, "20 Million", "18.1");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (14, "20 Million", "6.09 Million");
+INSERT INTO networth (id, net_worth, subscribers) VALUES (15, "16 Million", "17 Million");
+
+
+--Return of total net worth and total subscribers in 2023 for each youtuber
+
+SELECT youtubers.fullname, networth.net_worth, networth.subscribers
+FROM youtubers
+JOIN networth
+ON youtubers.id = networth.id;
+
