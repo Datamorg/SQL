@@ -90,3 +90,58 @@ SELECT Product, SUM(quantity)
 FROM EAM_DB.FebSales
 WHERE location LIKE '%Los Angeles%'
 GROUP BY Product;
+
+
+-- Which locations in New York received at least 3 orders in January, and how many order did they each receive?
+
+SELECT DISTINCT location, COUNT(orderID)
+FROM EAM_DB.JanSales
+WHERE location LIKE '%NY%'
+AND length (orderid) = 6
+AND orderid <> 'Order ID'
+GROUP BY location
+HAVING COUNT(orderID)>2;
+
+-- How many of each type of headphone were sold in February?
+
+SELECT SUM(quantity) AS quantity, Product
+FROM EAM_DB.FebSales
+WHERE PRODUCT LIKE '%headphone%'
+GROUP BY Product;
+
+
+--What was the average amount spent per account in February?
+
+SELECT SUM(quantity*price)/COUNT(customer.acctnum)
+FROM EAM_DB.FebSales Feb
+
+LEFT JOIN EAM_DB.customers customer
+ON Feb.orderid =customer.order_id
+
+WHERE length (orderid) = 6
+AND orderid <> 'Order ID';
+
+-- What was the average quantity of products purchased per account in February?
+
+SELECT SUM(quantity)/COUNT(customer.acctnum) AS 'Avg products purchased per account in February'
+FROM EAM_DB.FebSales Feb
+
+LEFT JOIN EAM_DB.customers customer
+ON Feb.orderid = customer.order_id
+
+WHERE length (orderid) = 6
+AND orderid <> 'Order ID';
+
+-- Which product brought in the most revenue in January and how much revenue did it bring in total?
+SELECT product, sum(quantity*price) AS 'Revenue'
+FROM EAM_DB.JanSales
+GROUP BY product
+ORDER BY sum(quantity*price) DESC
+LIMIT 1;
+
+-- Top 5 products that brought the most revenue in February and how much revenue did it bring in total?
+SELECT product, sum(quantity*price) AS 'Revenue'
+FROM EAM_DB.FebSales
+GROUP BY product
+ORDER BY SUM(quantity*price) DESC
+LIMIT 5;
