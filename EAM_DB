@@ -1,0 +1,62 @@
+-- How many orders were placed in January?
+
+SELECT COUNT (orderid)
+FROM EAM_DB.JanSales
+WHERE length (orderid) = 6
+AND orderid <> 'Order ID';
+    -- There were 9681 orders in January
+
+
+-- How many of those orders were for an iphone? 
+
+SELECT COUNT (orderid)
+FROM EAM_DB.JanSales
+WHERE Product = 'iPhone'
+AND length (orderid) = 6
+AND orderid <> 'Order ID';
+    -- There were a total of 379 orders that were for iPhone
+    
+-- Select the customer account numbers for all the orders that were placed in February
+
+SELECT distinct acctnum
+FROM EAM_DB.customers customers
+INNER JOIN EAM_DB.FebSales Feb
+ON customers.order_id = Feb.orderid
+WHERE length (orderid) = 6
+AND orderid <> 'Order ID';
+
+-- Which product was the cheapest one sold in January, and what was the price?
+
+SELECT product, MIN(price)
+FROM EAM_DB. JanSales 
+GROUP BY product, price
+ORDER BY price ASC 
+LIMIT 1;
+    -- The cheapest product sold on January was AAA Batteries (4-pack), and the price was $2.99
+    
+-- What is the total revenue for each product sold in January?
+SELECT SUM(quantity)*price AS Revenue, product
+FROM EAM_DB.JanSales
+GROUP BY product;
+
+
+-- Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+
+SELECT SUM(quantity), product, SUM(quantity)*price AS Revenue
+FROM EAM_DB.FebSales
+WHERE location = '548 Lincoln St, Seattle, WA 98101'
+GROUP BY product;
+    -- The products sold were AA Batteries (4-pack), the total sold was 2 units with a total revenue of $7.68
+    
+
+-- How many customers ordered more than 2 products at a time, and what was the average amount spent for those customers?
+
+SELECT COUNT (DISTINCT customer.acctnum),
+AVG (quantity*price)
+FROM EAM_DB.FebSales Feb
+LEFT JOIN EAM_DB.customers customer
+ON Feb.orderid = customer.order_id
+WHERE Feb.Quantity > 2
+AND length (orderid) = 6
+AND orderid <> 'Order ID';
+    -- There was a total of 278 customers that bought 2 products at a time, with the average amount spent being $13.8
